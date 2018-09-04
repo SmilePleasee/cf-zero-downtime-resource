@@ -1,0 +1,2 @@
+#!/bin/sh
+CF_DIAL_TIMEOUT=30 /usr/bin/cf "$@"

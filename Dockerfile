@@ -1,6 +1,6 @@
 FROM node:carbon-alpine
 
-ENV CF_CLI_VERSION=6.35.2
+ENV CF_CLI_VERSION=6.38.0
 ENV NODE_ENV=production
 
 RUN apk add --no-cache \
@@ -16,5 +16,5 @@ COPY package*.json ./
 RUN npm install --only=production
 
 COPY . ./
-
+COPY ./my_cf_cli /usr/bin
 RUN ln -s ./check.js ./check; ln -s ./in.js ./in; ln -s ./out.js ./out
