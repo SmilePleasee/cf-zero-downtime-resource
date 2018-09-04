@@ -15,7 +15,7 @@ exports.auth = source => {
   const secret = useClientCredentials ? source.client_secret : source.password
 
   try {
-    child_process.execFileSync("cf", ["api", source.api])
+    child_process.execFileSync("CF_TRACE=true cf", ["api", source.api])
     console.log(`CF: API endpoint set to ${source.api}`)
   } catch (e) {
     throw new Error(`CF: Unable to set API endpoint to ${source.api}`)
@@ -23,7 +23,7 @@ exports.auth = source => {
 
   try {
     child_process.execFileSync(
-      "cf",
+      "CF_TRACE=true cf",
       [
         "auth",
         id,
@@ -49,7 +49,7 @@ exports.target = ({ organization, space }) => {
     return
   }
   try {
-    child_process.execFileSync("cf", [
+    child_process.execFileSync("CF_TRACE=true cf", [
       "target",
       "-o",
       organization,
